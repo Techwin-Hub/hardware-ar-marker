@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hardware Tools AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <a-scene embedded arjs>
+      
+      <!-- Hammer Marker -->
+      <a-marker type="pattern" url="hammer.patt">
+        <a-entity gltf-model="hammer.glb" 
+                  scale="2 2 2" 
+                  position="0 0 0" 
+                  rotation="0 180 0">
+        </a-entity>
+      </a-marker>
+
+      <!-- Screwdriver Marker -->
+      <a-marker type="pattern" url="screwdriver.patt">
+        <a-entity gltf-model="screwdriver.glb" 
+                  scale="2 2 2" 
+                  position="0 0 0" 
+                  rotation="0 180 0">
+        </a-entity>
+      </a-marker>
+
+      <!-- Wrench Marker -->
+      <a-marker type="pattern" url="wrench.patt">
+        <a-entity gltf-model="wrench.glb" 
+                  scale="2 2 2" 
+                  position="0 0 0" 
+                  rotation="0 180 0">
+        </a-entity>
+      </a-marker>
+
+      <!-- Drill Marker -->
+      <a-marker type="pattern" url="drill.patt">
+        <a-entity gltf-model="drill.glb" 
+                  scale="2 2 2" 
+                  position="0 0 0" 
+                  rotation="0 180 0">
+        </a-entity>
+      </a-marker>
+
+      <!-- Saw Marker -->
+      <a-marker type="pattern" url="saw.patt">
+        <a-entity gltf-model="saw.glb" 
+                  scale="0.1 0.1 0.1" 
+                  position="0 0 0" 
+                  rotation="0 180 0">
+        </a-entity>
+      </a-marker>
+
+      <!-- Add some lights so models show colors -->
+      <a-entity light="type: ambient; color: #ffffff; intensity: 1"></a-entity>
+      <a-entity light="type: directional; color: #ffffff; intensity: 0.8" position="1 1 1"></a-entity>
+
+      <!-- Camera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
