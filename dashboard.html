@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hardware AR Shop - Dashboard</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f7f7f7; }
+    header {
+      background: #2a5298;
+      color: white;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; font-size: 22px; }
+    header nav button {
+      background: white;
+      color: #2a5298;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    header nav button:hover { background: #eaeaea; }
+
+    .qr-section {
+      display: none;
+      margin: 40px auto;
+      text-align: center;
+    }
+    .qr-section h2 {
+      margin-bottom: 20px;
+      color: #2a5298;
+    }
+    .qr-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+    .qr-container img {
+      max-width: 100%;
+      height: auto;
+      border: 3px solid #2a5298;
+      border-radius: 12px;
+      background: white;
+    }
+    .nav-btn {
+      background: #2a5298;
+      color: white;
+      border: none;
+      font-size: 20px;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .nav-btn:hover { background: #1e3c72; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hardware AR Shop</h1>
+    <nav>
+      <button onclick="showQRs()">Scan & View</button>
+    </nav>
+  </header>
+
+  <div class="qr-section" id="qr-section">
+    <h2 id="qr-title">ScrewDriver</h2>
+    <div class="qr-container">
+      <button class="nav-btn" onclick="prevQR()">&#8592;</button>
+      <img id="qr-image" src="images/screwdriver.png" alt="QR Code">
+      <button class="nav-btn" onclick="nextQR()">&#8594;</button>
+    </div>
+  </div>
+
+  <script>
+    const qrFiles = [
+      "screwdriver.png",
+      "wrench.png",
+      "drill.png",
+      "saw.png"
+    ];
+    let currentIndex = 0;
+
+    function showQRs() {
+      document.getElementById("qr-section").style.display = "block";
+      updateQR();
+    }
+
+    function updateQR() {
+      const filename = qrFiles[currentIndex];
+      document.getElementById("qr-image").src = "images/" + filename;
+      document.getElementById("qr-title").innerText =
+        filename.split(".")[0].charAt(0).toUpperCase() + filename.split(".")[0].slice(1);
+    }
+
+    function nextQR() {
+      currentIndex = (currentIndex + 1) % qrFiles.length;
+      updateQR();
+    }
+
+    function prevQR() {
+      currentIndex = (currentIndex - 1 + qrFiles.length) % qrFiles.length;
+      updateQR();
+    }
+  </script>
+</body>
+</html>
